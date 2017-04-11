@@ -33,6 +33,7 @@ var ReactQiniu = React.createClass({
         supportClick: React.PropTypes.bool,
         accept: React.PropTypes.string,
         multiple: React.PropTypes.bool,
+        randomKey: React.PropTypes.bool,
         // Qiniu
         uploadUrl: React.PropTypes.string,
         prefix: React.PropTypes.string,
@@ -47,6 +48,7 @@ var ReactQiniu = React.createClass({
         }
 
         return {
+            randomKey: false,
             supportClick: true,
             multiple: true,
             uploadUrl: uploadUrl
@@ -129,7 +131,7 @@ var ReactQiniu = React.createClass({
 
     upload: function(file) {
         if (!file || file.size === 0) return null;
-        var key = file.preview.split('/').pop() + '.' + file.name.split('.').pop();
+        var key = this.props.randomKey ? file.preview.split('/').pop() + '.' + file.name.split('.').pop() : file.name;
         if (this.props.prefix) {
             key = this.props.prefix  + key;
         }
