@@ -36,6 +36,7 @@ var ReactQiniu = React.createClass({
         randomKey: React.PropTypes.bool,
         // Qiniu
         uploadUrl: React.PropTypes.string,
+        uploadKey: React.PropTypes.string,
         prefix: React.PropTypes.string,
         //props to check File Size before upload.example:'2Mb','30k'...
         maxSize:React.PropTypes.string,
@@ -130,8 +131,11 @@ var ReactQiniu = React.createClass({
     },
 
     upload: function(file) {
+        const { uploadKey, randomKey } = this.props;
         if (!file || file.size === 0) return null;
-        var key = this.props.randomKey ? file.preview.split('/').pop() + '.' + file.name.split('.').pop() : file.name;
+        var key = randomKey ? file.preview.split('/').pop() + '.' + file.name.split('.').pop()
+          : uploadKey ? uploadKey + '.' + file.name.split('.').pop()
+          : file.name;
         if (this.props.prefix) {
             key = this.props.prefix  + key;
         }
