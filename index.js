@@ -131,7 +131,8 @@ var ReactQiniu = React.createClass({
     },
 
     upload: function(file) {
-        const { uploadKey, randomKey } = this.props;
+        var uploadKey = this.props.uploadKey;
+        var randomKey = this.props.randomKey;
         if (!file || file.size === 0) return null;
         var key = randomKey ? file.preview.split('/').pop() + '.' + file.name.split('.').pop()
           : uploadKey ? uploadKey + '.' + file.name.split('.').pop()
