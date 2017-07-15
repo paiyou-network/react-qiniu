@@ -52,7 +52,8 @@ var ReactQiniu = React.createClass({
             randomKey: false,
             supportClick: true,
             multiple: true,
-            uploadUrl: uploadUrl
+            uploadUrl: uploadUrl,
+            maxSize: '100M'
         };
     },
 
