@@ -28,7 +28,8 @@ var ReactQiniu = React.createClass({
         token: React.PropTypes.string.isRequired,
         // called before upload to set callback to files
         onUpload: React.PropTypes.func,
-        size: React.PropTypes.number,
+        width: React.PropTypes.number,
+        height: React.PropTypes.number,
         style: React.PropTypes.object,
         supportClick: React.PropTypes.bool,
         accept: React.PropTypes.string,
@@ -160,8 +161,8 @@ var ReactQiniu = React.createClass({
         }
 
         var style = this.props.style || {
-            width: this.props.size || 100,
-            height: this.props.size || 100,
+            width: this.props.width || 100,
+            height: this.props.height || 100,
             borderStyle: this.state.isDragActive ? 'solid' : 'dashed'
         };
 
